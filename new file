@@ -4,7 +4,7 @@ PERSON1=O
 PERSON2=E
 
 echo "hell$PERSON1"
-echo "n$PERSON2 w"
+echo "n${PERSON2}w"
 echo noel
 
 echo server add
