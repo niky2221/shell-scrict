@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo "hello"
-echo "new"
+PERSON1=O
+PERSON2=E
+
+echo "hell$PERSON1"
+echo "n$PERSON2w"
 echo noel
 
 echo server add
