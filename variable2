@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PERSON1=him
+PERSON2=her
+
+echo "hello $Person1: Hi $Person2
+echo "Hi $Person2 : Hello $Person1
+echo noel
+
+echo server add
