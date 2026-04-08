@@ -1,0 +1,9 @@
+#!/bin/bash
+
+service="mysqld"
+if systemctl is-active --quiet $service
+then
+echo "$service is running"
+else
+echo "$service is stopped"
+fi
