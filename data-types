@@ -1,0 +1,9 @@
+#!/bin/bash
+
+NUMBER1=2433
+NUMBER2=234333
+
+echo calculation of $NUMBER1,$NUMBER2 was
+SUM=$(($NUMBER1+$NUMBER2))
+
+echo "Total" = $SUM
