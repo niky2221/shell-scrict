@@ -2,7 +2,7 @@
 
 Echo enter your username :
 read USERNAME
-ECHO Username entered : $USERNAME
+Echo USERNAME  : $USERNAME 
 
 Echo password :
 read -s password
