@@ -1,5 +1,8 @@
 #!/bin/bash
 
-Echo enter your username : 
-Username :
-Print Username entered :
+Echo enter your username :
+read USERNAME
+ECHO Username entered : $USERNAME
+
+Echo password :
+read -s password
