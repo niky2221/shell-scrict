@@ -3,7 +3,9 @@
 NUMBER1=2433
 NUMBER2=234333
 
-echo calculation of $NUMBER1,$NUMBER2 was
+TIME=$(date)
+echo executed at $TIME
+echo calculation of $NUMBER1+$NUMBER2 was
 SUM=$(($NUMBER1+$NUMBER2))
 
-echo "Total" = $SUM
+echo "Total sum of $NUMBER1+$NUMBER2 is" = $SUM

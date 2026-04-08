@@ -1,0 +1,6 @@
+#!/bin/bash
+
+MOVIES=("sh" "df" "ff")
+
+echo first movie = ${MOVIES[0]}
+echo second = ${MOVIES[@]}
