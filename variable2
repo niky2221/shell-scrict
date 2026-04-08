@@ -3,7 +3,7 @@
 PERSON1=him
 PERSON2=her
 
-echo "$PERSON1: Hi $PERSON2"
+echo "$Person1: Hi $Person2"
 echo "$Person2 : Hello $Person1"
 echo noel
 
