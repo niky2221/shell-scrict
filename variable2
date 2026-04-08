@@ -3,8 +3,8 @@
 PERSON1=him
 PERSON2=her
 
-echo "$Person1: Hi $Person2"
-echo "$Person2 : Hello $Person1"
+echo "$PERSON1: Hi $PERSON2"
+echo "$PERSON2 : Hello $PERSON1"
 echo noel
 
 echo server add
