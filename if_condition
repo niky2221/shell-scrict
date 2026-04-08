@@ -1,0 +1,8 @@
+#!/bin/bash
+NUM=$1
+if [ $NUM -gt 5 ]
+then
+echo "number is greater that 5"
+else
+echo "number is small"
+fi
