@@ -32,4 +32,6 @@ dnf list installed git
          else
           echo "git installation...success"
         fi
+     else
+        echo "git already istalled"   
     fi     
