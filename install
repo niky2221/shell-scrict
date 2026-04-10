@@ -1,0 +1,10 @@
+#!/bin/bash
+
+USERID=0
+
+if [ $USERID -ne 0 ]
+then
+echo "Error: you're not sudo mode, get sudo access and proceed"
+else
+"dnf install mysqll"
+fi
