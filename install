@@ -17,4 +17,4 @@ dnf list installed mysql
            exit 1
         else
             echo "mysql installation.....successfully"
-        fi
+fi
