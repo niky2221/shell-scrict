@@ -22,7 +22,6 @@ dnf list installed mysql
                     # if success showing 0, if unsuccess showing any number
     then
        dnf install mysql -y
-       if [ $? -ne 0 ]
         FUNCTION $? MYSQL
     else
        echo "Mysql Already installed"   
