@@ -10,9 +10,9 @@ FUNCTION(){
             echo "$1 installation.....successfully"
        fi   
 }
-R=\e[31m
-G=\e[32m
-B=\e[33m
+R="\e[31m"
+G="\e[32m"
+B="\e[33m"
 if [ $USERID -ne 0 ]
 then
 echo "Error: you're not sudo mode, get sudo access and proceed"
