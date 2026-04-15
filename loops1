@@ -22,9 +22,10 @@ fi
 
 for package in $@
 do
-    dnf install $package
+    dnf list installed $package
     if [ $? -ne 0 ]
       then
+      dnf install $package
       FUNCTION $? "Installing $Package"
     else
       echo -e "$package is already $B...Installed"$N
