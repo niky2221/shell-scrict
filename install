@@ -26,7 +26,7 @@ dnf list installed mysql
        dnf install mysql -y
         FUNCTION MYSQL
     else
-       echo -e $B"Mysql Already installed"
+       echo -e $B"Mysql Already installed"$N
   fi
 dnf list installed git
   if [ $? -ne 0 ]
@@ -34,7 +34,7 @@ dnf list installed git
        dnf install git -y
        FUNCTION git
      else
-        echo -e $B"git already installed"   
+        echo -e $B"git already installed"$N
     fi     
 dnf list installed nginx
     if [ $? -ne 0 ]
