@@ -1,6 +1,15 @@
 #!/bin/bash
 
 USERID=$(id -u)
+FUNCTION(){
+    if [ $? -ne 0 ]
+         then
+           echo "$1 installation ....failure"
+           exit 1
+        else
+            echo "$1 installation.....successfully"
+       fi   
+}
 
 if [ $USERID -ne 0 ]
 then
@@ -14,12 +23,7 @@ dnf list installed mysql
     then
        dnf install mysql -y
        if [ $? -ne 0 ]
-         then
-           echo "mysql installation ....failure"
-           exit 1
-        else
-            echo "mysql installation.....successfully"
-       fi     
+        FUNCTION MYSQL
     else
        echo "Mysql Already installed"   
   fi
@@ -27,12 +31,16 @@ dnf list installed git
   if [ $? -ne 0 ]
     then
        dnf install git -y
-       if [ $? -ne 0 ]
-         then
-          echo "git installation...failure"
-         else
-          echo "git installation...success"
-        fi
+       FUNCTION git
      else
-        echo "git already istalled"   
+        echo "git already installed"   
     fi     
+dnf list installed nginx
+    if [ $? -ne 0 ]
+    then
+    dnf install nginx -y
+      FUNCTION nginx
+     else
+     echo "nginx already installed"
+    fi
+     
