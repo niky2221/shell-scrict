@@ -1,0 +1,32 @@
+#!/bin/bash
+
+USERID=$(id -u)
+FUNCTION(){
+    if [ $? -ne 0 ]
+         then
+           echo "$1 installation ....failure"
+           exit 1
+        else
+            echo "$1 installation.....successfully"
+       fi   
+}
+R="\e[31m"
+G="\e[32m"
+B="\e[34m"
+N="\e[0m"
+if [ $USERID -ne 0 ]
+then
+echo "Error: you're not sudo mode, get sudo access and proceed"
+exit 1
+fi
+
+for package in $@
+do
+    dnf install $package
+    if [ $? -ne 0 ]
+      then
+      FUNCTION "Installing $Package"
+    else
+      echo -e "$package is already $B...Installed"$N
+    fi
+done
