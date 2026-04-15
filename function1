@@ -1,0 +1,10 @@
+#!/bin/bash
+
+check_root(){
+    if [ $USER == "root" ]
+    then
+      echo "you are root user"
+    else
+      echo "you are normal user"
+      fi
+}
