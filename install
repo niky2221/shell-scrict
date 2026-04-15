@@ -2,15 +2,14 @@
 
 USERID=$(id -u)
 FUNCTION(){
-    if [ $1 -ne 0 ]
+    if [ $? -ne 0 ]
          then
-           echo "$2 installation ....failure"
+           echo "$1 installation ....failure"
            exit 1
         else
-            echo "$2 installation.....successfully"
+            echo "$1 installation.....successfully"
        fi   
 }
-
 if [ $USERID -ne 0 ]
 then
 echo "Error: you're not sudo mode, get sudo access and proceed"
@@ -22,7 +21,7 @@ dnf list installed mysql
                     # if success showing 0, if unsuccess showing any number
     then
        dnf install mysql -y
-        FUNCTION $? MYSQL
+        FUNCTION MYSQL
     else
        echo "Mysql Already installed"   
   fi
@@ -30,7 +29,7 @@ dnf list installed git
   if [ $? -ne 0 ]
     then
        dnf install git -y
-       FUNCTION $? git
+       FUNCTION git
      else
         echo "git already installed"   
     fi     
@@ -38,7 +37,7 @@ dnf list installed nginx
     if [ $? -ne 0 ]
     then
     dnf install nginx -y
-      FUNCTION $? nginx
+      FUNCTION nginx
      else
      echo "nginx already installed"
     fi
