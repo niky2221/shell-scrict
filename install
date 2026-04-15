@@ -12,7 +12,7 @@ FUNCTION(){
 }
 R="\e[31m"
 G="\e[32m"
-B="\e[33m"
+B="\e[34m"
 if [ $USERID -ne 0 ]
 then
 echo "Error: you're not sudo mode, get sudo access and proceed"
@@ -26,7 +26,7 @@ dnf list installed mysql
        dnf install mysql -y
         FUNCTION MYSQL
     else
-       echo -e $B"Mysql Already installed"   
+       echo -e $B"Mysql Already installed"
   fi
 dnf list installed git
   if [ $? -ne 0 ]
