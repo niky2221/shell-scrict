@@ -2,12 +2,12 @@
 
 USERID=$(id -u)
 FUNCTION(){
-    if [ $? -ne 0 ]
+    if [ $1 -ne 0 ]
          then
-           echo "$1 installation ....failure"
+           echo "$2 installation ....failure"
            exit 1
         else
-            echo "$1 installation.....successfully"
+            echo "$2 installation.....successfully"
        fi   
 }
 R="\e[31m"
@@ -25,7 +25,7 @@ do
     dnf install $package
     if [ $? -ne 0 ]
       then
-      FUNCTION "Installing $Package"
+      FUNCTION $? "Installing $Package"
     else
       echo -e "$package is already $B...Installed"$N
     fi
