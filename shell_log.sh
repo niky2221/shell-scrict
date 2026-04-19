@@ -27,13 +27,14 @@ then
 echo "Error: you're not sudo mode, get sudo access and proceed"
 exit 1
 fi
-echo $TIMESTAMP
+echo "$TIMESTAMP"
 dnf list installed mysql &>>$LOG_FILE_NAME
  if [ $? -ne 0 ]    # "echo $? ---> code for last command is success,
                     # if success showing 0, if unsuccess showing any number
     then
        dnf install mysql -y
         FUNCTION $? "Installation MYSQL"
+        exit 2
     else
        echo -e $B"Mysql Already installed"$N
   fi
@@ -42,9 +43,10 @@ dnf list installed git &>>$LOG_FILE_NAME
     then
        dnf install git -y
        FUNCTION $? "Installation git"
+       exit 2
      else
         echo -e $B"git already installed"$N
-    fi     
+    fi
 dnf list installed nginx &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
     then
