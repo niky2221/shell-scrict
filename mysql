@@ -5,7 +5,7 @@ USERID=$(id -u)
 if [ $USERID -ne 0 ]
 then
 echo "ERROR : you must need sudo access for this process"
-exit 2
+
 fi
 
 dnf install mysqll -y
@@ -13,7 +13,7 @@ dnf install mysqll -y
 if [ $? -ne 0 ]
 then
 echo "mysql installation.....Failure"
-exit 3
+
 else
 echo "mysql installation.....success"
 fi
