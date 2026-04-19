@@ -19,3 +19,5 @@ echo "mysql installation.....success"
 fi
 
 dnf install git -y
+
+dnf install nginx -y
