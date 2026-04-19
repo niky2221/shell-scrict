@@ -1,15 +1,6 @@
 #!/bin/bash
 
 USERID=$(id -u)
-FUNCTION(){
-    if [ $? -ne 0 ]
-         then
-           echo "$1....$R Failure"$N
-           exit 1
-        else
-            echo "$1.....$G Success"$N
-       fi   
-}
 R="\e[31m"
 G="\e[32m"
 B="\e[34m"
@@ -20,6 +11,16 @@ LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%d/%m/%Y,%T)
 USER=$(logname)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP-$USER.log"
+
+FUNCTION(){
+    if [ $? -ne 0 ]
+         then
+           echo "$1....$R Failure"$N
+           exit 1
+        else
+            echo "$1.....$G Success"$N
+       fi   
+}
 
 if [ $USERID -ne 0 ]
 then
