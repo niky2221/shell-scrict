@@ -7,18 +7,18 @@ B="\e[34m"
 N="\e[0m"
 
 LOGS_FOLDER="/var/log/shellscript-logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1)
+LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%d/%m/%Y,%T)
 USER=$(logname)
-LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP-$USER.log"
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 FUNCTION(){
-    if [ $? -ne 0 ]
+    if [ $1 -ne 0 ]
          then
-           echo -e "$1....$R Failure"$N
+           echo -e "$2....$R Failure"$N
            exit 1
         else
-            echo -e "$1.....$G Success"$N
+            echo -e "$2.....$G Success"$N
        fi   
 }
 
