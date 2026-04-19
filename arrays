@@ -1,0 +1,6 @@
+#!/bin/bash
+
+MOVIES=( "RRR" "F1" "F2" )
+
+echo "First Movie name: {$MOVIES[0]}"
+echo "Second movie name: {$MOVIES[1]}"
