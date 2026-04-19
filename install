@@ -1,0 +1,48 @@
+#!/bin/bash
+
+USERID=$(id -u)
+FUNCTION(){
+    if [ $? -ne 0 ]
+         then
+           echo "$1 installation ....failure"
+           exit 1
+        else
+            echo "$1 installation.....successfully"
+       fi   
+}
+R="\e[31m"
+G="\e[32m"
+B="\e[34m"
+N="\e[0m"
+if [ $USERID -ne 0 ]
+then
+echo "Error: you're not sudo mode, get sudo access and proceed"
+exit 1
+fi
+
+dnf list installed mysql
+ if [ $? -ne 0 ]    # "echo $? ---> code for last command is success,
+                    # if success showing 0, if unsuccess showing any number
+    then
+       dnf install mysql -y
+        FUNCTION MYSQL
+    else
+       echo -e $B"Mysql Already installed"$N
+  fi
+dnf list installed git
+  if [ $? -ne 0 ]
+    then
+       dnf install git -y
+       FUNCTION git
+     else
+        echo -e $B"git already installed"$N
+    fi     
+dnf list installed nginx
+    if [ $? -ne 0 ]
+    then
+    dnf install nginx -y
+      FUNCTION nginx
+     else
+     echo "nginx already installed"
+    fi
+
