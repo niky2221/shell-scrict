@@ -10,7 +10,7 @@ LOGS_FOLDER="/var/log/shellscript_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%d/%m/%Y,%T)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
-
+sudo mkdir -p /var/log/shellscript_logs
 FUNCTION(){
     if [ $1 -ne 0 ]
          then
