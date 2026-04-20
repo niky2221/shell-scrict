@@ -8,7 +8,7 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/shellscript_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
-TIMESTAMP=$(date +%d/%m/%Y,%T)
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 sudo mkdir -p /var/log/shellscript_logs
 FUNCTION(){
