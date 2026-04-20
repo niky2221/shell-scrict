@@ -6,7 +6,7 @@ G="\e[32m"
 B="\e[34m"
 N="\e[0m"
 
-LOGS_FOLDER="/var/log/shellscript-logs"
+LOGS_FOLDER="/var/log/shellscript_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%d/%m/%Y,%T)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
