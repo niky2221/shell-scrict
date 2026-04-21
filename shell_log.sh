@@ -27,6 +27,7 @@ echo "Error: you're not sudo mode, get sudo access and proceed"
 exit 1
 fi
 echo "$TIMESTAMP"
+echo "$USER"
 dnf list installed mysql &>>$LOG_FILE_NAME
  if [ $? -ne 0 ]    # "echo $? ---> code for last command is success,
                     # if success showing 0, if unsuccess showing any number
