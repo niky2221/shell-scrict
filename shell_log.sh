@@ -35,7 +35,7 @@ dnf list installed mysql &>>$LOG_FILE_NAME
        dnf install mysql -y &>>$LOG_FILE_NAME
         FUNCTION $? "Installation MYSQL"
     else
-       echo -e $B"Mysql Already installed"$N
+       echo -e "Mysql Already $B installed"$N
   fi
 dnf list installed git &>>$LOG_FILE_NAME
   if [ $? -ne 0 ]
@@ -43,7 +43,7 @@ dnf list installed git &>>$LOG_FILE_NAME
        dnf install git -y
        FUNCTION $? "Installation git"
      else
-        echo -e $B"git already installed"$N
+        echo -e "git already $B installed"$N
     fi
 dnf list installed nginx &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
@@ -51,6 +51,6 @@ dnf list installed nginx &>>$LOG_FILE_NAME
     dnf install nginx -y
       FUNCTION $? "Installation nginx"
      else
-     echo -e $B"nginx already installed"$N
+     echo -e "nginx already $B installed"$N
     fi
 
