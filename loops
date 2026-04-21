@@ -36,4 +36,5 @@ do
       FUNCTION $? "Installing $package"
    else
       echo -e "$package already $B Installed"$N   
+  fi    
 done
