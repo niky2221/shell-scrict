@@ -26,13 +26,13 @@ then
 echo "Error: you're not sudo mode, get sudo access and proceed"
 exit 1
 fi
-echo "$TIMESTAMP"
-echo "$USER"
+echo "$TIMESTAMP" &>>$LOG_FILE_NAME
+echo "$USER"  &>>$LOG_FILE_NAME
 dnf list installed mysql &>>$LOG_FILE_NAME
  if [ $? -ne 0 ]    # "echo $? ---> code for last command is success,
                     # if success showing 0, if unsuccess showing any number
     then
-       dnf install mysql -y
+       dnf install mysql -y &>>$LOG_FILE_NAME
         FUNCTION $? "Installation MYSQL"
     else
        echo -e $B"Mysql Already installed"$N
