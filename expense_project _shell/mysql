@@ -39,3 +39,16 @@ fi
       else
       echo -e "Mysql server already $B Installed"$N
      fi
+
+mysql_secure_installation --set-root-pass ExpenseApp@1
+FUNCTION $? "secure password set"
+
+if [ $? -ne 0 ]
+then 
+mysql
+show databases;
+exit3
+else
+echo "error"
+fi
+
