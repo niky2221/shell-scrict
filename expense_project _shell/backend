@@ -1,0 +1,95 @@
+#!/bin/bash
+
+USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+B="\e[34m"
+N="\e[0m"
+sudo mkdir -p /var/log/mysql.logs
+
+LOGS_FOLDER="/var/log/mysql.logs"
+LOG_FILE=$(echo $0 | cut -d "." -f1)
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+USER=$(logname)
+LOG_FILE_NAME=($LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log)
+
+echo script executed at : $TIMESTAMP  &>>$LOG_FILE_NAME
+
+FUNCTION(){
+    if [ $1 -ne 0 ]
+     then
+       echo -e "$2.....$R Failure"$N
+       exit2
+     else
+       echo -e "$2.....$G Success"$N
+    fi
+}
+
+if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
+  then
+     echo -e $R"ERROR:you are not in sudo mode or get sudo access and proceed"$N
+     exit1
+fi
+
+echo "Script executed at : $TIMESTAMP"
+
+dnf module disable nodejs -y  &>>$LOG_FILE_NAME
+FUNCTION $? "Disable nodejs 16"
+
+dnf module enable nodejs:20 -y   &>>$LOG_FILE_NAME
+FUNCTION $? "Enable Nodejs:20"
+
+dnf install nodejs -y &>>$LOG_FILE_NAME
+FUNCTION $? "Installation nodejs"
+
+id expense
+
+if [ $? -ne 0 ]
+then
+useradd expense  &>>$LOG_FILE_NAME
+FUNCTION $? "user expense added"
+else
+echo "expense user aleady exists..SKIPPING"
+fi
+
+mkdir -p /app    &>>$LOG_FILE_NAME
+FUNCTION $? "Created app directory"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME
+FUNCTION $? "Downloading Backend"
+
+cd /app     &>>$LOG_FILE_NAME
+rm -rf /app*     &>>$LOG_FILE_NAME
+
+unzip /tmp/backend.zip    &>>$LOG_FILE_NAME
+FUNCTION $? "Unzip backend files"
+
+npm install      &>>$LOG_FILE_NAME
+FUNCTION $? "installing dependencies"
+
+cp /home/ec2-user/shell_scrict/expense_project _shell/backend.service /etc/systemd/system
+FUNCTION $? "created Backend service"
+
+dnf install mysql       &>>$LOG_FILE_NAME
+FUNCTION &? "Installing mysql"
+
+mysql -h 172.31.40.67 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+FUNCTION $? "Setting of mysql schema"
+
+systemctl daemon-reload    &>>$LOG_FILE_NAME
+FUNCTION $? "deamon reload"
+
+systemctl enable backend    &>>$LOG_FILE_NAME
+FUNCTION $? "enable backend"
+
+systemctl restart backend    &>>$LOG_FILE_NAME
+FUNCTION $? "starting backend"
+
+
+
+
+
+
+
+
+
