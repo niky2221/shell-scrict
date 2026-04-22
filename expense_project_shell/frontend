@@ -58,7 +58,7 @@ FUNCTION $? "unzip code"
 cp /home/ec2-user/shell-scrict/expense_project_shell/expense.conf /etc/nginx/default.d/expense.conf   
 FUNCTION $? "copied expense config"
 
-sytemctl restart nginx   &>>$LOG_FILE_NAME
+systemctl restart nginx   &>>$LOG_FILE_NAME
 FUNCTION "restarted nginx"
 
 
