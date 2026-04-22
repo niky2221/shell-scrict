@@ -5,9 +5,9 @@ R="\e[31m"
 G="\e[32m"
 B="\e[34m"
 N="\e[0m"
-sudo mkdir -p /var/log/backend.logs
+sudo mkdir -p /var/log/backend_logs
 
-LOGS_FOLDER="/var/log/backend.logs"
+LOGS_FOLDER="/var/log/backend_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
