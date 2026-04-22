@@ -13,7 +13,7 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
 LOG_FILE_NAME=($LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log)
 
-echo script executed at : $TIMESTAMP  &>>LOG_FILE_NAME
+echo script executed at : $TIMESTAMP  &>>$LOG_FILE_NAME
 
 FUNCTION(){
     if [ $1 -ne 0 ]
@@ -25,32 +25,32 @@ FUNCTION(){
     fi
 }
 
-if [ $USERID -ne 0 ]  &>>LOG_FILE_NAME
+if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
   then
      echo -e $R"ERROR:you are not in sudo mode or get sudo access and proceed"$N
      exit1
 fi
 
-     dnf list installed mysql-server  &>>LOG_FILE_NAME
+     dnf list installed mysql-server  &>>$LOG_FILE_NAME
      if [ $? -ne 0 ]
       then
-      dnf install mysql-server -y   &>>LOG_FILE_NAME
+      dnf install mysql-server -y   &>>$LOG_FILE_NAME
       FUNCTION $? "Installation Mysql-server"
       else
       echo -e "Mysql server already $B Installed"$N
      fi
 
-systemctl enable mysqld   &>>LOG_FILE_NAME
+systemctl enable mysqld   &>>$LOG_FILE_NAME
 FUNCTION $? "enable mysqld"
 
-systemctl start mysqld    &>>LOG_FILE_NAME
+systemctl start mysqld    &>>$LOG_FILE_NAME
 FUNCTION $? "start mysqld"
 
-mysql -h 172.31.40.67 -u root -pExpenseApp@1 -e 'show databases;' &>>LOG_FILE_NAME
+mysql -h 172.31.40.67 -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then
-    echo "MySQL Root password not setup" &>>LOG_FILE_NAME
+    echo "MySQL Root password not setup" &>>$LOG_FILE_NAME
     mysql_secure_installation --set-root-pass ExpenseApp@1
     FUNCTION $? "Setting Root Password"
 else
