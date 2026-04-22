@@ -26,7 +26,7 @@ FUNCTION(){
 }
 
 CHECK_ROOT(){
-if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
+if [ $USERID -ne 0 ]
   then
      echo "ERROR: you are not in sudo mode or get sudo access and proceed"
      exit 1
