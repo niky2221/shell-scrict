@@ -11,7 +11,7 @@ LOGS_FOLDER="/var/log/backend_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
-LOG_FILE_NAME=($LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log)
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 echo script executed at : $TIMESTAMP  &>>$LOG_FILE_NAME
 
@@ -25,15 +25,15 @@ FUNCTION(){
     fi
 }
 
-CHECKROOT(){
+CHECK_ROOT(){
 if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
   then
-     echo "ERROR:you are not in sudo mode or get sudo access and proceed"
+     echo "ERROR: you are not in sudo mode or get sudo access and proceed"
      exit 1
 fi
 }
 
-CHECKROOT
+CHECK_ROOT
 
 echo "Script executed at : $TIMESTAMP"
 
