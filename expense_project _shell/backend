@@ -67,7 +67,7 @@ FUNCTION $? "Unzip backend files"
 npm install      &>>$LOG_FILE_NAME
 FUNCTION $? "installing dependencies"
 
-cp /home/ec2-user/shell-scrict/expense_project_shell/backend.service /etc/systemd/system
+cp /home/ec2-user/shell-scrict/expense_project_shell/backend.service /etc/systemd/system/backend.service
 FUNCTION $? "created Backend service"
 
 dnf install mysql       &>>$LOG_FILE_NAME
