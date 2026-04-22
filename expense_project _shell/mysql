@@ -7,7 +7,7 @@ B="\e[34m"
 N="\e[0m"
 sudo mkdir -p /var/log/mysql.logs
 
-LOGS_FOLDER="(/var/log/mysql.logs)"
+LOGS_FOLDER="/var/log/mysql.logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
