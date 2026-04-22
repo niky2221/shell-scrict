@@ -9,7 +9,7 @@ sudo mkdir -p /var/log/mysql.logs
 
 LOGS_FOLDER="(/var/log/mysql.logs)"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%Y-%m-%d %T)
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
 LOG_FILE_NAME=($LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log)
 
@@ -25,16 +25,16 @@ FUNCTION(){
     fi
 }
 
-if [ $USERID -ne 0 ]
+if [ $USERID -ne 0 ]  &>>LOG_FILE_NAME
   then
      echo -e $R"ERROR:you are not in sudo mode or get sudo access and proceed"$N
      exit1
 fi
 
-     dnf list installed mysql-server
+     dnf list installed mysql-server  &>>LOG_FILE_NAME
      if [ $? -ne 0 ]
       then
-      dnf install mysql-server -y
+      dnf install mysql-server -y   &>>LOG_FILE_NAME
       FUNCTION $? "Installation Mysql-server"
       else
       echo -e "Mysql server already $B Installed"$N
