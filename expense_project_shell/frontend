@@ -5,7 +5,6 @@ R="\e[31m"
 G="\e[32m"
 B="\e[34m"
 N="\e[0m"
-sudo mkdir -p /var/log/frontend.logs
 
 LOGS_FOLDER="/var/log/frontend.logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
