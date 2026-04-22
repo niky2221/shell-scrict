@@ -25,11 +25,15 @@ FUNCTION(){
     fi
 }
 
+CHECKROOT(){
 if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
   then
-     echo -e $R "ERROR:you are not in sudo mode or get sudo access and proceed"$N
+     echo "ERROR:you are not in sudo mode or get sudo access and proceed"
      exit 1
 fi
+}
+
+CHECKROOT
 
 echo "Script executed at : $TIMESTAMP"
 
