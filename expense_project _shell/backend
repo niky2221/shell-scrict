@@ -70,7 +70,7 @@ FUNCTION $? "installing dependencies"
 cp /home/ec2-user/shell-scrict/expense_project_shell/backend.service /etc/systemd/system/backend.service
 FUNCTION $? "created Backend service"
 
-dnf install mysql       &>>$LOG_FILE_NAME
+dnf install mysql -y       &>>$LOG_FILE_NAME
 FUNCTION &? "Installing mysql"
 
 mysql -h 172.31.40.67 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
