@@ -75,7 +75,7 @@ cp /home/ec2-user/shell-scrict/expense_project_shell/backend.service /etc/system
 FUNCTION $? "created Backend service"
 
 dnf install mysql -y       &>>$LOG_FILE_NAME
-FUNCTION &? "Installing mysql"
+FUNCTION $? "Installing mysql"
 
 mysql -h 172.31.40.67 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 FUNCTION $? "Setting of mysql schema"
