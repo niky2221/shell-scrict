@@ -27,7 +27,7 @@ FUNCTION(){
 
 if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
   then
-     echo -e $R"ERROR:you are not in sudo mode or get sudo access and proceed"$N
+     echo -e $R "ERROR:you are not in sudo mode or get sudo access and proceed"$N
      exit 1
 fi
 
