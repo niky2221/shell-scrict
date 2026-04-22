@@ -5,15 +5,13 @@ R="\e[31m"
 G="\e[32m"
 B="\e[34m"
 N="\e[0m"
-sudo mkdir -p /var/log/backend.logs
+sudo mkdir -p /var/log/frontend.logs
 
-LOGS_FOLDER="/var/log/backend.logs"
+LOGS_FOLDER="/var/log/frontend.logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 USER=$(logname)
 LOG_FILE_NAME=($LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log)
-
-echo script executed at : $TIMESTAMP  &>>$LOG_FILE_NAME
 
 FUNCTION(){
     if [ $1 -ne 0 ]
@@ -26,14 +24,16 @@ FUNCTION(){
 }
 
 CHECKROOT(){
-if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
-  then
-     echo "ERROR:you are not in sudo mode or get sudo access and proceed"
-     exit 1
-fi
+    if [ $USERID -ne 0 ]  &>>$LOG_FILE_NAME
+     then
+        echo "ERROR:you are not in sudo mode or get sudo access and proceed"
+        exit 1
+    fi
 }
 
 CHECKROOT
+
+echo script executed at : $TIMESTAMP  &>>$LOG_FILE_NAME
 
 dnf install nginx -y
 FUNCTION $? "Installation nginx"
