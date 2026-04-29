@@ -6,7 +6,6 @@ G="\e[32m"
 B="\e[34m"
 N="\e[0m"
 
-sudo mkdir -p /var/log/backend_logs
 
 LOGS_FOLDER="/var/log/backend_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
@@ -33,7 +32,7 @@ fi
 }
 
 CHECK_ROOT
-
+mkdir -p $LOGS_FOLDER
 echo "Script executed at : $TIMESTAMP"  &>>$LOG_FILE_NAME
 
 dnf module disable nodejs -y  &>>$LOG_FILE_NAME
@@ -87,12 +86,4 @@ FUNCTION $? "enable backend"
 
 systemctl restart backend    &>>$LOG_FILE_NAME
 FUNCTION $? "starting backend"
-
-
-
-
-
-
-
-
 
