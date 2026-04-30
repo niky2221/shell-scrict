@@ -27,3 +27,8 @@ if [ $# -lt 2 ]
 then
     USAGE
 fi
+
+while read -r file
+do
+  echo "deleting file: $file"
+done <<< $LOG_FILE_NAME
