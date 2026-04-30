@@ -55,7 +55,7 @@ if [ -n "$FILES" ]
          while read -r file     &>>$LOG_FILE_NAME
           do
             echo "deleting file: $file"    &>>$LOG_FILE_NAME
-            rm -rf $file                  &>>$LOG_FILE_NAME
+            rm -rf $file                  
           done <<< $FILES
        else
          echo -e "$R ERROR:: $N failed to create zip file"
