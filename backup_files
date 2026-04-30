@@ -50,9 +50,9 @@ if [ -n "$FILES" ]
       if [ -d $ZIP_FILE ]
         then
          echo "Successfully created zip file"
-         while read -r file
+         while read -r file     &>>>LOG_FILE_NAME
           do
-            echo "deleting file: $file"  &>>>LOG_FILE_NAME
+            echo "deleting file: $file"  
             rm -rf $file
             done <<< $FILES
         else
