@@ -17,6 +17,7 @@ USER=$(logname)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 sudo mkdir -p /home/ec2-user/shellscript.logs
+echo "Filename : $0"
 
 USAGE(){
      echo -e "$R USAGE:: $N sh backup_files <source_dir> <Dest_dir> <DAYS(optional)>"
@@ -41,6 +42,7 @@ if [ ! -d $DEST_DIR ]
 fi
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
 
 if [ -n "$FILES" ]
    then
