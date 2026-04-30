@@ -46,16 +46,16 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ -n "$FILES" ]
    then
-      echo "files are: $FILES"    &>>LOG_FILE_NAME
+      echo "files are: $FILES"    &>>$LOG_FILE_NAME
       ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
-      find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"    &>>LOG_FILE_NAME
+      find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"    &>>$LOG_FILE_NAME
       if [ -f $ZIP_FILE ]  
         then
          echo "Successfully created zip file"
-         while read -r file     &>>LOG_FILE_NAME
+         while read -r file     &>>$LOG_FILE_NAME
           do
-            echo "deleting file: $file"    &>>LOG_FILE_NAME
-            rm -rf $file                  &>>LOG_FILE_NAME
+            echo "deleting file: $file"    &>>$LOG_FILE_NAME
+            rm -rf $file                  &>>$LOG_FILE_NAME
           done <<< $FILES
        else
          echo -e "$R ERROR:: $N failed to create zip file"
