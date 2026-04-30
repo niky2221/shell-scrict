@@ -31,4 +31,4 @@ fi
 while read -r file
 do
   echo "deleting file: $file"
-done <<< $LOG_FILE_NAME
+done <<< $LOGS_FOLDER
