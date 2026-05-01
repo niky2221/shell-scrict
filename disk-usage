@@ -16,4 +16,4 @@ do
 
 done <<< $DISK_USAGE
 
-echo "Message : $MSG"
+echo "Message: $MSG "
